@@ -29,7 +29,7 @@ $api.interceptors.response.use(
          if (err.response.status === 401 && !originalRequest._isRetry) {
             originalRequest._isRetry = true;
             try {
-               const response = await axios.get(`${process.env.REACT_APP_API_URL}/${API_KEYS.REFRESH}`, {
+               const response = await axios.get(process.env.REACT_APP_API_URL + API_KEYS.REFRESH, {
                   withCredentials: true,
                });
                Utils.setAccessToken(response.data.accessToken);
