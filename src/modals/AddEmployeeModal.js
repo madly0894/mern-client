@@ -28,7 +28,15 @@ export const defaultValues = {
 const AddEmployeeModal = ({ show, onHide }) => {
    const queryClient = useQueryClient();
 
-   const { control, reset, setError, handleSubmit, formState, setValue, watch } = useForm({
+   const {
+      control,
+      reset,
+      setError,
+      handleSubmit,
+      formState: { isValid },
+      setValue,
+      watch,
+   } = useForm({
       defaultValues: {
          ...defaultValues,
       },
@@ -88,7 +96,7 @@ const AddEmployeeModal = ({ show, onHide }) => {
             </div>
 
             <div className='modal-footer'>
-               <button className='action add-action' type='submit'>
+               <button className='action add-action' type='submit' disabled={!isValid}>
                   Add
                </button>
             </div>
